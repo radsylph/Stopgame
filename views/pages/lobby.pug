@@ -1,10 +1,20 @@
 extends ../layout/index
 
 block content
-    section(class="bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-400 p-4") 
+    section(class="bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-400 p-4 border border-black rounded-lg") 
      div(class="py-5")   
-      h1(class="text-center text-2xl font-extrabold")=pagina
-    section(class="p-2")
-     input(type="button", value="create room", class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded")
-     input(type="text", placeholder="room name", class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded")
-       
+      h1(class="text-center text-2xl font-extrabold") Welcome to the Central 
+       span(class="text-2xl font-extrabold text-white ")= pagina  
+
+    section(class="p-2 border border-black rounded-lg m-5")
+     div(class="flex flex-1 gap-2 ")
+      div(class= "m-10 mx-auto max-w-md shadow active:shadow-black rounded-lg p-2")
+       input#CreateRoomBtn(type="button", value="create room", class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded shadow hover:shadow-black")
+      div(class="m-9 mx-auto rounded-lg px-4 py-2 text-center text-xl font-extrabold shadow")
+       input#RoomInput(type="text", placeholder="room name", class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded ") 
+      div(class= "m-10 mx-auto max-w-md shadow active:shadow-black rounded-lg p-2")
+       //input#JoinRoomBtn(type="button", value="join room", class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded shadow hover:shadow-black")
+       button#JoinRoomBtn(type="button", value="join room", class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded shadow hover:shadow-black") Join Room
+    script(src="http://localhost:3000/socket.io/socket.io.js")
+    script(src="/js/lobby.js") 
+    

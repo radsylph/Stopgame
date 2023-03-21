@@ -129,6 +129,7 @@ class SessionManager {
       .run(req);
     //
     let resultado = validationResult(req);
+
     if (!resultado.isEmpty()) {
       return res.render("auth/reset-password", {
         pagina: "Reset Password",
@@ -160,6 +161,7 @@ class SessionManager {
     }
     //we generate a token for the user
     usuario.token = generateToken1();
+
     await usuario.save();
     //we send a email to the user with the link to reset the password
     emailReset({
@@ -310,7 +312,7 @@ class SessionManager {
         csrfToken: req.csrfToken(), // for the csrf token
         errores: [
           {
-            msg: "The password is incorrect",
+            msg: "The password is incorrect", //profundizar como funciona el JWT,probar express-session
           },
         ],
         usuario: {

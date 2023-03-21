@@ -1,5 +1,3 @@
-//must migrate to clean arquitecture
-
 //import definition for express to work, use the type module in the package.json
 import express from "express";
 
@@ -14,12 +12,21 @@ import cookieParser from "cookie-parser";
 
 //import the csurf module to protect the forms
 import csrf from "csurf";
+//import server from socket.io to use the socket.io library
+import { Server } from "socket.io";
+//import the http module to use the http library and create a server
+import http from "http";
 
 //define the port where the server will be located
 const port = process.env.PORT || 3000;
 
 //create a new instance of the express class
 const app = express();
+//create a new instance of the http class
+const server = http.createServer(app);
+//create a new instance of the socket.io class
+const io = new Server(server);
+
 //we use the .use method to define the middlewares that will be used in the application, in this case the express.urlencoded
 //method to parse the data that comes from the forms
 app.use(express.urlencoded({ extended: true }));
@@ -49,5 +56,27 @@ app.use("/", usuarioRoutes);
 
 //we use the .listen method to define the port where the server will be located and we also use the console.log method to
 //print a message in the console when the server is running
-app.listen(port, () => console.log(`Example app listening on port ${port}`));
+server.listen(port, () => console.log(`Example app listening on port ${port}`));
 
+io.on("connection", (socket) => {
+  console.log("a user connected");
+  socket.emit("Userconnected", "a user connected");
+  socket.broadcast.emit("Userconnected", "a user connected");
+
+  socket.on("message", (msg) => {
+    //console.log(msg);
+    io.emit("message", msg);
+    //socket.emit("message", msg);
+    //socket.broadcast.emit("message" ,msg);
+  });
+
+socket.on("CreateRoom" , (rn)=>{
+  
+  
+  });
+
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+    io.emit("Userconnected", "a user disconnected");
+  });
+});

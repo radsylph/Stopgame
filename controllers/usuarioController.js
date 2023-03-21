@@ -2,6 +2,7 @@
 to see in the differents endpoints of the app*/
 
 import { SessionManager } from "../components/SessionManager.js";
+let user = false;
 const Session = new SessionManager();
 //we create the controller for the login form where we render the login view from the auth folder
 const formulariologin = (req, res) => {
@@ -15,8 +16,16 @@ const formulariologin = (req, res) => {
 
 //we create the controller for the register form where we render the register view from the auth folder
 const formularioregistro = (req, res) => {
+  const { _token } = req.cookies;
+
+  if (!_token) {
+    user = false;
+  } else {
+    user = true;
+  }
   res.render("auth/register", {
     title: "Registre",
+    user: user,
     pagina: "Create an Account",
     csrfToken: req.csrfToken(), // for the csrf token
   });
@@ -24,17 +33,42 @@ const formularioregistro = (req, res) => {
 
 //we create the controller for the reset password form where we render the reset password view from the auth folder
 const formularioresetpass = (req, res) => {
+  const { _token } = req.cookies;
+
+  if (!_token) {
+    user = false;
+  } else {
+    user = true;
+  }
   res.render("auth/reset-password", {
     title: "Reset Password",
+    user: user,
     pagina: "Recover your password",
     csrfToken: req.csrfToken(), // for the csrf token
   });
 };
 
+const gamepage = (req, res)=> {
+  res.render("pages/gamepage" , {
+    title: "Game",
+    user: true,
+    game: true,
+    pagina:"Welcome to the Game, stay sharp",
+    csrfToken: req.csrfToken(), // for the csrf token
+  })
+}
+
 //we create the controller for the homepage where we render the homepage view from the pages folder
 const homepage = (req, res) => {
+  const { _token } = req.cookies;
+  if (!_token) {
+    user = false;
+  } else {
+    user = true;
+  }
   res.render("pages/homepage", {
     title: "Home",
+    user: user,
     pagina: "Welcome to the homepage",
     csrfToken: req.csrfToken(), // for the csrf token
   });
@@ -42,10 +76,17 @@ const homepage = (req, res) => {
 
 //we create the controller for the lobby where we render the lobby view from the pages folder
 const lobbypage = (req, res) => {
+  const { _token } = req.cookies;
+
+  if (!_token) {
+    user = false;
+  } else {
+    user = true;
+  }
   res.render("pages/lobby", {
     title: "lobby",
-    pagina: "lobby",
-    user: true,
+    pagina: "Lobby",
+    user: user,
     csrfToken: req.csrfToken(), // for the csrf token
   });
 };
@@ -76,7 +117,7 @@ const resetPassword = (req, res) => {
 };
 
 //controller to verify the token and render the new password form
-const comprobartoken = (req, res, next) => {
+const comprobartoken = async (req, res) => {
   Session.CheckResetPassword(req, res);
 };
 
@@ -85,10 +126,6 @@ const nuevapassword = (req, res) => {
   Session.VerifyNewPassword(req, res);
 };
 
-const logout = (req, res) => {
-  res.clearCookie("_token");
-  res.redirect("/");
-};
 //we export the controllers to be used in the routes
 export {
   formulariologin,
@@ -103,4 +140,5 @@ export {
   homepage,
   test,
   lobbypage,
+  gamepage,
 };

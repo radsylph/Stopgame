@@ -1,0 +1,36 @@
+extends ../layout/index
+
+block content
+    div(class="mt-8 mx-auto max-w-md shadow shadow-black rounded")
+            div.bg-white.py-4.px-4
+                form.space-y-4(method="" action="" autocomplete="off" novalidate)
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    div
+                        label.block.text-sm.uppercase.text-gray-400.mb-2.font-bold(for="city") City
+                        input#name.w-full.border.border-gray-400.p-2.rounded.mb-4.shadow.shadow-black(type="text" placeholder="City" name="city")
+                    div 
+                        label.block.text-sm.uppercase.text-gray-400.mb-2.font-bold(for="country") Country
+                        input#email.w-full.border.border-gray-400.p-2.rounded.mb-4.shadow.shadow-black(type="text" placeholder="Country" name="country")
+                    div
+                        label.block.text-sm.uppercase.text-gray-400.mb-2.font-bold(for="color") Color
+                        input#password.w-full.border.border-gray-400.p-2.rounded.mb-4.shadow.shadow-black(type="text" placeholder = "Color" name="color")
+                    div
+                        label.block.text-sm.uppercase.text-gray-400.mb-2.font-bold(for="animal") Animal
+                        input#password.w-full.border.border-gray-400.p-2.rounded.mb-4.shadow.shadow-black(type="text" placeholder="Animal" name="animal")
+                    div
+                        label.block.text-sm.uppercase.text-gray-400.mb-2.font-bold(for="fruit") Fruit
+                        input#password.w-full.border.border-gray-400.p-2.rounded.mb-4.shadow.shadow-black(type="text" placeholder="Fruit" name="fruit")            
+                    div
+                        input(class="w-full  cursor-pointer border border-black rounded hover:bg-indigo-700 bg-indigo-600 py-3 text-white active:bg-white active:text-black" type="submit" value="Send responses")        
+                        
+                    
+                 
+                        
+                        
+                        
+                        
+        
+        
+
+
+

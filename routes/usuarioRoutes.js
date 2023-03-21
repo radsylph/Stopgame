@@ -13,6 +13,7 @@ import {
   homepage,
   lobbypage,
   test,
+  gamepage,
 } from "../controllers/usuarioController.js";
 
 const router = express.Router();
@@ -26,11 +27,14 @@ router.route("/login").get(formulariologin).post(autenticar);
 router.get("/confirmar/:token", confirmar);
 router.route("/registro").get(formularioregistro).post(registrar);
 router.route("/reset").get(formularioresetpass).post(resetPassword);
-router.route("/reset:token").get(comprobartoken).post(nuevapassword);
+//router.route("/reset:token").get(comprobartoken).post(nuevapassword);
+router.get("/reset/:token", comprobartoken);
+router.post("/reset/:token", nuevapassword);
 
 router.get("/home", homepage);
 router.get("/test", protegerRutas, test);
 router.get("/lobby", protegerRutas, lobbypage);
+router.get("/game" , protegerRutas, gamepage);
 
 router.get("/logout", (req, res) => {
   res.clearCookie("_token");

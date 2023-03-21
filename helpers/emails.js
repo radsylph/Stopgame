@@ -42,7 +42,7 @@ const emailReset = async (datos) => {
       pass: process.env.EMAIL_HOST_PASSWORD,
     },
   });
-
+  
   const { email, nombre, token } = datos;
   try {
     await transport.sendMail({
