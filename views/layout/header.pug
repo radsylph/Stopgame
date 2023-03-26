@@ -5,11 +5,10 @@ header(class="bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-400 p-4")
         
         nav(class="my-2 text-sm md:flex md:items-center md:gap-3 font-bold text-white hidden")
             a(href="/home" class="text-white font-bold text-xl mx-4 hover:text-black") Home
-            if user
+            if user 
                 a(href="/lobby" class="text-white font-bold text-xl mx-4 hover:text-black") Lobby
                 a(href="/profile" class="text-white font-bold text-xl mx-4 hover:text-black") Profile
                 a(href="/logout" class="text-white font-bold text-xl mx-4 hover:text-black") Logout
             else
                 a(href="/login" class="text-white font-bold text-xl mx-4 hover:text-black") Login
                 a(href="/registro" class="text-white font-bold text-xl mx-4 hover:text-black") Register
-            

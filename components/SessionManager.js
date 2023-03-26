@@ -1,6 +1,6 @@
 import { check, validationResult } from "express-validator";
 import Usuario from "../models/Usuario.js";
-import { generateToken1, generateJWT } from "../helpers/token.js";
+import { generateToken1, generateJWT, decoded } from "../helpers/token.js";
 import { emailRegistro, emailReset } from "../helpers/emails.js";
 import bcrypt from "bcrypt";
 
@@ -129,6 +129,7 @@ class SessionManager {
       .run(req);
     //
     let resultado = validationResult(req);
+
     if (!resultado.isEmpty()) {
       return res.render("auth/reset-password", {
         pagina: "Reset Password",
@@ -160,6 +161,7 @@ class SessionManager {
     }
     //we generate a token for the user
     usuario.token = generateToken1();
+
     await usuario.save();
     //we send a email to the user with the link to reset the password
     emailReset({
@@ -269,65 +271,73 @@ class SessionManager {
   }
   // we verify the user and the password in the database
   async Login(req, res) {
-    const { email, password } = req.body;
-    const usuario = await Usuario.findOne({
-      where: { email },
-    });
-    // we check if the user exists and if it is not we send a message to the user
-    if (!usuario) {
-      return res.render("auth/login", {
-        pagina: "Login",
-        csrfToken: req.csrfToken(), // for the csrf token
-        errores: [
-          {
-            msg: "The user doesn't exist",
-          },
-        ],
-        usuario: {
-          email: req.body.email,
-        },
+    try {
+      const { email, password } = req.body;
+      const usuario = await Usuario.findOne({
+        where: { email },
       });
-    }
-    // we check if the user has confirmed the account and if it is not we send a message to the user
-    if (!usuario.confirmado) {
-      return res.render("auth/login", {
-        pagina: "Login",
-        csrfToken: req.csrfToken(), // for the csrf token
-        errores: [
-          {
-            msg: "You Need to confirm your account",
+      // we check if the user exists and if it is not we send a message to the user
+      if (!usuario) {
+        return res.render("auth/login", {
+          pagina: "Login",
+          csrfToken: req.csrfToken(), // for the csrf token
+          errores: [
+            {
+              msg: "The user doesn't exist",
+            },
+          ],
+          usuario: {
+            email: req.body.email,
           },
-        ],
-        usuario: {
-          email: req.body.email,
-        },
-      });
-    }
-    // we check if the password is correct and if it is not we send a message to the user
-    if (!usuario.verificarPassword(password)) {
-      return res.render("auth/login", {
-        pagina: "Login",
-        csrfToken: req.csrfToken(), // for the csrf token
-        errores: [
-          {
-            msg: "The password is incorrect",
+        });
+      }
+      // we check if the user has confirmed the account and if it is not we send a message to the user
+      if (!usuario.confirmado) {
+        return res.render("auth/login", {
+          pagina: "Login",
+          csrfToken: req.csrfToken(), // for the csrf token
+          errores: [
+            {
+              msg: "You Need to confirm your account",
+            },
+          ],
+          usuario: {
+            email: req.body.email,
           },
-        ],
-        usuario: {
-          email: req.body.email,
-        },
-      });
+        });
+      }
+      // we check if the password is correct and if it is not we send a message to the user
+      if (!usuario.verificarPassword(password)) {
+        return res.render("auth/login", {
+          pagina: "Login",
+          csrfToken: req.csrfToken(), // for the csrf token
+          errores: [
+            {
+              msg: "The password is incorrect", //profundizar como funciona el JWT,probar express-session
+            },
+          ],
+          usuario: {
+            email: req.body.email,
+          },
+        });
+      }
+
+      const token = generateJWT(usuario.id, usuario.name);
+      console.log(token);
+      const userInfo = decoded(token);
+      console.log(userInfo);
+      return res
+        .cookie("_token", token, {
+          httpOnly: true,
+        })
+        .cookie("_userName", userInfo.name, {
+          httpOnly: true,
+        })
+        .redirect("/lobby");
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Internal server error" });
     }
-
-    const token = generateJWT(usuario.id);
-
-    console.log(token);
-
-    return res
-      .cookie("_token", token, {
-        httpOnly: true,
-      })
-      .redirect("/lobby");
   }
 }
 
