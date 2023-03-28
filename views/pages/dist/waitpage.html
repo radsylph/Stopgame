@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stop Game | 	</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <body class="bg-no-repeat bg-cover bg-center bg-fixed bg-gradient-to-b  bg-opacity-50" style="background-image: url('../img/test1.jpg');"></body>
+    <header class="bg-gradient-to-r from-indigo-500 via-blue-500 via-pink-500 to-purple-400  p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-4xl font-extrabold text-white">Stop<span class="font-normal text-black">Game</span></h1>
+        <nav class="my-2 text-sm md:flex md:items-center md:gap-3 font-bold text-white hidden"><a class="text-white font-bold text-xl mx-4 hover:text-black" href="/home">Home</a><a class="text-white font-bold text-xl mx-4 hover:text-black" href="/login">Login</a><a class="text-white font-bold text-xl mx-4 hover:text-black" href="/registro">Register</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container mx-auto mt-20">
+      <section class="bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-400 p-4 border border-black rounded-lg opacity-75"> 
+        <div class="py-5">  
+          <h1 class="text-center text-2xl font-extrabold">
+            <ul class="text-center" id="playerlist">
+              <li class="text-center"></li>
+            </ul>
+            <h2 class="text-center text-2xl font-extrabold">Welcome to the room: <span class="text-2xl font-extrabold text-white" id="rooms"></span><span class="hidden" id="username"></span></h2>
+          </h1>
+        </div>
+      </section>
+      <section class="p-6 md:p-10 border border-black rounded-lg m-5 bg-black bg-opacity-30" id="general">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="cursor-not-allowed">
+            <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-400 cursor-not-allowed" id="Start" type="button">Start Game</button>
+          </div>
+          <div>
+            <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-400" id="leave" type="button">leave room</button>
+          </div>
+          <div>
+            <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-400" id="Finish" type="button">Finish Game</button>
+          </div>
+        </div>
+        <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+        <script src="/js/wait.js"></script>
+      </section>
+    </main>
+  </head>
+</html>

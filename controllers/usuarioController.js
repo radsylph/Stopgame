@@ -2,10 +2,12 @@
 to see in the differents endpoints of the app*/
 
 import { SessionManager } from "../components/SessionManager.js";
+import { Players } from "../helpers/players.js";
+import { io, roomPlayers } from "../index.js";
 let user = false;
 const Session = new SessionManager();
 const Roomlist = [];
-const Players = [];
+
 //we create the controller for the login form where we render the login view from the auth folder
 const formulariologin = (req, res) => {
   res.render("auth/login", {
@@ -50,33 +52,9 @@ const formularioresetpass = (req, res) => {
   });
 };
 
-const gamepage = (req, res) => {
-  var name = req.query.name;
-  res.render("pages/gamepage", {
-    title: "Game",
-    user: true,
-    game: true,
-    rooms: name,
-    pagina: "Welcome to the Game, stay sharp",
-    csrfToken: req.csrfToken(), // for the csrf token
-  });
-};
-
-const gamepage2 = (req, res) => {
-  var name = req.query.name;
-  res.render("pages/test", {
-    title: "test",
-    user: true,
-    game: true,
-    rooms: name,
-    pagina: "Welcome to the Game, stay sharp",
-    csrfToken: req.csrfToken(), // for the csrf token
-  });
-};
-
 //we create the controller for the homepage where we render the homepage view from the pages folder
 const homepage = (req, res) => {
-  const { _token } = req.cookies;
+  const { _token, _userName } = req.cookies;
   if (!_token) {
     user = false;
   } else {
@@ -85,6 +63,7 @@ const homepage = (req, res) => {
   res.render("pages/homepage", {
     title: "Home",
     user: user,
+    username: _userName,
     pagina: "Welcome to the homepage",
     csrfToken: req.csrfToken(), // for the csrf token
   });
@@ -109,6 +88,45 @@ const lobbypage = (req, res) => {
   });
 };
 
+const waitpage = (req, res) => {
+  const { _token } = req.cookies;
+  const userName = req.cookies._userName;
+  console.log(userName);
+
+  if (!_token) {
+    user = false;
+  } else {
+    user = true;
+  }
+
+  res.render("pages/waitpage", {
+    title: "waiting",
+    pagina: "Waiting",
+    rooms: Roomlist,
+    user: user,
+    username: userName,
+    csrfToken: req.csrfToken(),
+  });
+};
+
+const gamepage = (req, res) => {
+  const { _token, _userName } = req.cookies;
+  if (!_token) {
+    user = false;
+  } else {
+    user = true;
+  }
+  var name = req.query.name;
+  res.render("pages/gamepage", {
+    title: "Game",
+    user: user,
+    game: true,
+    rooms: name,
+    username: _userName,
+    pagina: "Welcome to the Game, stay sharp",
+    csrfToken: req.csrfToken(), // for the csrf token
+  });
+};
 //controller to veryfy the user and log him in
 const autenticar = (req, res) => {
   Session.LoginVerify(req, res);
@@ -180,6 +198,7 @@ const deleteroom = (req, res) => {
   }
   if (option) {
     Roomlist.splice(i, 1);
+    delete roomPlayers[name];
     console.log(JSON.stringify(Roomlist));
     res.sendStatus(200);
   } else {
@@ -201,7 +220,7 @@ export {
   homepage,
   lobbypage,
   gamepage,
-  gamepage2,
+  waitpage,
   addroom,
   Roomlist,
   deleteroom,

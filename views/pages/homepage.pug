@@ -2,30 +2,40 @@ extends ../layout/index
 
 block content
     section(class="bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-400 p-4 border border-black rounded-lg") 
-     div(class="py-1")   
-      h1(class="text-center text-2xl font-extrabold")=pagina
-    section(class="border border-black p-3 mt-4 grid grid-cols-3 gap-3 grid-flow-row w-full ") 
-     div(class = "m-8 mx-auto max-w-md shadow shadow-black rounded-lg p-2 hover:bg-indigo-700 hover:text-white")
-       h1(class="text-center text-xl font-extrabold cursor-default") Play the game of Stop now Online !, exercise the brain and have lots of fun
-       img(src="../public/img/brain.svg", alt="brain", class="w-1/2 mx-auto self-center ")
-     div(class = "m-8 mx-auto max-w-md shadow shadow-black rounded-lg p-2 hover:bg-indigo-700 hover:text-white")  
-       h1(class="text-center text-xl font-extrabold cursor-default") Enjoy this game with your friends, family or colleagues
-     div(class = "m-8 mx-auto max-w-md shadow shadow-black rounded-lg p-2 hover:bg-indigo-700 hover:text-white")  
-       h1(class="text-center text-xl font-extrabold cursor-default") Test your general knowledge about citys, countries, capitals and more
-    div(class = "m-8 mx-auto rounded-lg border border-black px-4 py-2 hover:bg-indigo-700 hover:text-white")
-      h1(class="text-center  text-xl font-extrabold cursor-default ") What is the game of Stop ?
-      p(class=" text-center font-normal cursor-default") Stop is a game of questions and answers, where you have to answer the questions correctly to continue playing, if you answer incorrectly you have to stop and the next player can continue playing. The game ends when one of the players has answered all the questions correctly.
+        div(class="py-1")   
+            h1(class="text-center text-3xl font-extrabold text-white")=pagina
+    section(class="border border-black p-3 mt-8 grid grid-cols-3 gap-5 grid-flow-row w-full rounded-lg ") 
+        div(class = "m-4 max-w-md shadow-black shadow-md rounded-lg p-6 bg-white bg-opacity-40 hover:bg-indigo-700 hover:text-white hover:shadow transition-colors duration-300 ease-in-out")
+            h1(class="text-center text-xl font-extrabold cursor-default ") Play the Game of Stop Now Online!
+            img(src="../img/brain.svg", alt="brain", class="w-1/2 py-4 mx-auto self-center h-1/2")
+        div(class = "m-4 max-w-md shadow-black shadow-md rounded-lg p-6 bg-white bg-opacity-40 hover:bg-indigo-700 hover:text-white hover:shadow transition-colors duration-300 ease-in-out")  
+            h1(class="text-center text-xl font-extrabold cursor-default ") Enjoy This Game with Your Friends, Family or Colleagues
+            img(src="../img/users.svg", alt="users", class="w-1/2 py-4 mx-auto self-center h-1/2")
+        div(class = "m-4 max-w-md shadow-black shadow-md rounded-lg p-6 bg-white bg-opacity-40 hover:bg-indigo-700 hover:text-white hover:shadow transition-colors duration-300 ease-in-out")  
+            h1(class="text-center text-xl font-extrabold cursor-default ") Test Your General Knowledge About Cities, Countries, Animals and More
+            img(src="../img/pencil.svg", alt="pencil", class="w-1/2 py-4 mx-auto self-center h-1/2")
+    div(class = "m-8 mx-auto rounded-lg border border-black px-8 py-6 bg-white bg-opacity-40")
+        h1(class="text-center text-2xl font-extrabold cursor-default") What Is the Game of Stop?
+        p(class="text-center font-normal cursor-default text-gray-700") Stop is a game of questions and answers, where you have to answer the questions correctly to continue playing. If you answer incorrectly, you have to stop and the next player can continue playing. The game ends when one of the players has answered all the questions correctly.
+    div(class = "m-8 mx-auto rounded-lg border border-black px-8 py-6 bg-white bg-opacity-40")
+        h1(class="text-center text-2xl font-extrabold cursor-default") How to Play the Game of Stop
+        p(class="text-center font-normal cursor-default text-gray-700") To play the game of Stop, you need at least two players. One player starts by choosing a letter of the alphabet, and then each player has to write down a word for each category that starts with that letter. The categories can be anything you choose, such as city, country, color, animal, or fruit. The first player to complete all the categories shouts "Stop!" and everyone stops writing. You then compare your answers, and you get one point for each correct answer. The player with the most points at the end of the game wins.
     section(class= "m-8")
-     div(class="mx-auto")
-      h1(class="text-center") these are the categories in wicht your knowledge will be put at test 
-     div(class="mx-auto p-2 flex flex-1 justify-around gap-3 shadow shadow-black p-3 rounded-lg")
-      div(class="text-center") city 
-      div(class="text-center") country
-      div(class="text-center") color
-      div(class="text-center") animal
-      div(class="text-center") fruit
-     
-
-      
-     
-    
+        div(class="mx-auto shadow-lg rounded-lg border border-black bg-white bg-opacity-40")
+         h1(class="text-center text-2xl font-extrabold cursor-default mt-1 text-black ") These Are the Categories in Which Your Knowledge Will Be Put to the Test 
+         div(class="m-2 p-6 flex flex-1 justify-around gap-6 ")
+          div(class="text-center font-bold hover:text-white hover:bg-indigo-700 transition-colors duration-300 ease-in-out cursor-default") City 
+          div(class="text-center font-bold hover:text-white hover:bg-indigo-700 transition-colors duration-300 ease-in-out cursor-default") Country
+          div(class="text-center font-bold hover:text-white hover:bg-indigo-700 transition-colors duration-300 ease-in-out cursor-default") Color
+          div(class="text-center font-bold hover:text-white hover:bg-indigo-700 transition-colors duration-300 ease-in-out cursor-default") Animal
+          div(class="text-center font-bold hover:text-white hover:bg-indigo-700 transition-colors duration-300 ease-in-out cursor-default") Fruit
+    footer(class=" py-4")
+     div(class="mx-auto max-w-4xl text-center text-black")
+        p(class="text-sm mb-2")
+            | Follow us on 
+            a(class="text-blue-700  hover:text-black transition-colors duration-300 ease-in-out", href="#") Facebook, 
+            a(class="text-blue-700 hover:text-black transition-colors duration-300 ease-in-out", href="#") Twitter, 
+            | and 
+            a(class="text-blue-700 hover:text-black transition-colors duration-300 ease-in-out", href="#") Instagram.
+        p(class="text-sm")
+            | © 2023 Stop Game. All rights reserved.

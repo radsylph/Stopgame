@@ -1,0 +1,23 @@
+extends ../layout/index
+
+block content
+  section(class="bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-400 p-4 border border-black rounded-lg opacity-75") 
+   div(class="py-5")   
+    h1(class="text-center text-2xl font-extrabold")= title
+      ul#playerlist(class="text-center")
+        li(class="text-center")
+      h2(class="text-center text-2xl font-extrabold") Welcome to the room: 
+       span#rooms(class="text-2xl font-extrabold text-white")= rooms
+       span#username(class="hidden")= username
+
+  section#general(class="p-6 md:p-10 border border-black rounded-lg m-5 bg-black bg-opacity-30")
+    div(class="flex flex-col md:flex-row md:items-center justify-between gap-4")
+     div(class="cursor-not-allowed")
+      button#Start(type="button" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-400 cursor-not-allowed") Start Game
+     div
+      button#leave(type="button" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-400") leave room
+     div
+      button#Finish(type="button" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-400") Finish Game
+            
+    script(src="http://localhost:3000/socket.io/socket.io.js")
+    script(src="/js/wait.js")

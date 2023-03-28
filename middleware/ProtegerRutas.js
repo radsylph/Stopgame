@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
 
 const protegerRutas = async (req, res, next) => {
-  const { _token } = req.cookies;
+  const { _token, _username } = req.cookies;
 
-  if (!_token) {
+  if (!_token && !_username) {
     return res.json({ error: "No tienes permiso para acceder a esta ruta" });
   }
 
@@ -12,7 +12,10 @@ const protegerRutas = async (req, res, next) => {
     req.usuario = payload;
   } catch (error) {
     console.log(error);
-    return res.clearCookie("_token").json({ msg: "Token invalido" });
+    return res
+      .clearCookie("_token")
+      .clearCookie("_username")
+      .json({ msg: "Token invalido" });
   }
   return next();
 };

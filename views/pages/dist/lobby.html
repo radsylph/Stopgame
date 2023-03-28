@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stop Game | 	</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <body class="bg-no-repeat bg-cover bg-center bg-fixed bg-gradient-to-b  bg-opacity-50" style="background-image: url('../img/test1.jpg');"></body>
+    <header class="bg-gradient-to-r from-indigo-500 via-blue-500 via-pink-500 to-purple-400  p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-4xl font-extrabold text-white">Stop<span class="font-normal text-black">Game</span></h1>
+        <nav class="my-2 text-sm md:flex md:items-center md:gap-3 font-bold text-white hidden"><a class="text-white font-bold text-xl mx-4 hover:text-black" href="/home">Home</a><a class="text-white font-bold text-xl mx-4 hover:text-black" href="/login">Login</a><a class="text-white font-bold text-xl mx-4 hover:text-black" href="/registro">Register</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container mx-auto mt-20">
+      <section class="bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-400 p-4 border border-black rounded-lg opacity-75"> 
+        <div class="py-5">  
+          <h1 class="text-center text-3xl md:text-6xl font-extrabold text-white tracking-wide">Welcome to the Central </h1>
+          <h2 class="text-center text-5xl font-extrabold text-white"></h2>
+          <h3 class="text-4xl font-extrabold text-900-300 text-center" id="username"></h3>
+        </div>
+      </section>
+      <section class="p-6 md:p-10 border border-black rounded-lg m-5 bg-black bg-opacity-30" id="general">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex-1 text-center md:text-left">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 md:mb-6 text-gray-800">Create a room</h2>
+            <h3 class="text-md text-gray-800 mb-6 md:mb-8 font-semibold">Create a new room and invite your friends to join you</h3>
+            <section class="p-2 rounded-lg m-5 hover:outline-none hover:ring-2 hover:ring-indigo-500 hover:ring-offset-2">
+              <div class="flex flex-col md:flex-row items-center gap-2 justify-between hover:bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-400 border border-gray-900 rounded-lg px-6 py-4">
+                <input class="bg-gray-100 rounded-lg px-6 py-4 w-full md:w-auto placeholder:text-black" id="RoomInput1" type="text" name="roomName" placeholder="Room Name">
+                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" id="CreateRoomBtn" type="button">Create</button>
+              </div>
+            </section>
+          </div>
+          <div class="flex-1 text-center md:text-right">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 md:mb-6 text-gray-800">Join a room</h2>
+            <h3 class="text-md text-gray-800 mb-6 md:mb-8 font-semibold">Enter the name of an existing room to join and start chatting with others</h3>
+            <section class="p-2 rounded-lg m-5 hover:outline-none hover:ring-2 hover:ring-indigo-500 hover:ring-offset-2 ">
+              <div class="flex flex-col md:flex-row items-center gap-2 justify-between hover:bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-400 border border-gray-900 rounded-lg px-6 py-4 ">
+                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-400" id="JoinRoomBtn" type="button">Join</button>
+                <input class="bg-gray-100 rounded-lg px-6 py-4 w-full md:w-auto placeholder:text-black" id="RoomInput2" type="text" name="roomName" placeholder="Room Name">
+              </div>
+            </section>
+          </div>
+        </div>
+        <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+        <script src="/js/lobby.js"></script>
+      </section>
+    </main>
+  </head>
+</html>

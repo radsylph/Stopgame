@@ -1,0 +1,49 @@
+extends ../layout/index
+
+block content
+  div.flex.flex-row.h-screen
+  div.flex.flex-col.w-1/4.bg-gray-100
+    h1.text-lg.text-center.bg-gray-300.p-2 Room Players
+    ul.list-disc.ml-5.mt-5
+      each player in players
+        li= player
+  div.flex.flex-col.flex-grow.bg-gray-200
+    h1.text-lg.text-center.bg-gray-300.p-2 Room Name
+    button#start-test.btn.bg-blue-500.text-white.m-2 Start Test
+    div#messages.h-4/5.overflow-y-scroll.p-2
+
+  div(class="py-5")   
+      h1(class="text-center text-2xl font-extrabold")= title
+      h2(class="text-center text-2xl font-extrabold") Welcome to the room 
+       span#rooms(class="text-2xl font-extrabold text-white ")= rooms
+      h1(class="text-center text-3xl font-medium") the letter this round is: 
+        span#letter(class="text-2xl font-extrabold text-white ")= rooms
+
+
+  div(class="mt-8 mx-auto max-w-md shadow shadow-black rounded border border-black")
+    div(class=" bg-white py-6 px-4 bg-opacity-50")
+     form(method="" action="" autocomplete="off" novalidate )
+      input(type="hidden" name="_csrf" value=csrfToken)
+      div(class="grid grid-cols-3 grid-rows-2 gap-2")
+        div(class="form-field col-span-1 row-span-1")
+          label(for="city" class="block text-sm uppercase text-gray-400 mb-2 font-bold") City
+          input#name(type="text" placeholder="City" name="city" class="w-full border border-gray-400 p-2 rounded mb-4 shadow shadow-black focus:outline-none focus:ring-2 focus:placeholder:text-black focus:bg-gradient-to-r from-pink-400 to-purple-500")
+        div(class="form-field col-span-1 row-span-1")
+          label(for="country" class="block text-sm uppercase text-gray-400 mb-2 font-bold") Country
+          input#email(type="text" placeholder="Country" name="country" class="w-full border border-gray-400 p-2 rounded mb-4 shadow shadow-black focus:outline-none focus:placeholder:text-black focus:bg-gradient-to-r from-pink-400 to-purple-500")
+        div(class=" form-field col-span-1 row-span-1")
+          label(for="fruit" class="block text-sm uppercase text-gray-400 mb-2 font-bold") Fruit
+          input#password(type="text" placeholder="Fruit" name="fruit" class="w-full border border-gray-400 p-2 rounded mb-4 shadow shadow-black focus:outline-none  focus:placeholder:text-black focus:bg-gradient-to-r from-pink-400 to-purple-500")
+        div(class="form-field col-span-1 row-span-1")
+          label(for="color" class="block text-sm uppercase text-gray-400 mb-2 font-bold") Color
+          input#password(type="text" placeholder="Color" name="color" class="w-full border border-gray-400 p-2 rounded mb-4 shadow shadow-black focus:outline-none  focus:placeholder:text-black focus:bg-gradient-to-r from-pink-400 to-purple-500")
+        div(class="col-span-1 row-span-1 form-field")
+          label(for="animal" class="block text-sm uppercase text-gray-400 mb-2 font-bold") Animal
+          input#password(type="text" placeholder="Animal" name="animal" class="w-full border border-gray-400 p-2 rounded mb-4 shadow shadow-black focus:outline-none  focus:placeholder:text-black focus:bg-gradient-to-r from-pink-400 to-purple-500")
+        div(class="col-span-1 row-span-1 form-field")
+          label(for="song" class="block text-sm uppercase text-gray-400 mb-2 font-bold") Song
+          input#password(type="text" placeholder="Song" name="song" class="w-full border border-gray-400 p-2 rounded mb-4 shadow shadow-black focus:outline-none  focus:placeholder:text-black focus:bg-gradient-to-r from-pink-400 to-purple-500")
+        div(class="w-full col-span-3 row-span-1 py-2")
+         input(type="submit" value="Send responses" class="w-full cursor-pointer border border-black rounded text-white bg-gradient-to-r from-pink-400 to-purple-500 hover:from-pink-500 hover:to-purple-600 active:bg-white active:text-black")
+  script(src="http://localhost:3000/socket.io/socket.io.js")
+  script(src="/js/game.js") 
