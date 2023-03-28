@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 header(class="bg-gradient-to-r from-indigo-500 via-blue-500 via-pink-500 to-purple-400  p-4")
   div(class="container mx-auto flex justify-between items-center")
     h1(class="text-4xl font-extrabold text-white") Stop
@@ -13,3 +14,19 @@ header(class="bg-gradient-to-r from-indigo-500 via-blue-500 via-pink-500 to-purp
       else
         a(href="/login" class="text-white font-bold text-xl mx-4 hover:text-black") Login
         a(href="/registro" class="text-white font-bold text-xl mx-4 hover:text-black") Register
+=======
+header(class="bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-400 p-4")
+    div(class="container mx-auto flex justify-between items-center")
+        h1(class="text-4xl font-extrabold text-white") Stop
+            span(class="font-normal text-black") Game
+        
+        nav(class="my-2 text-sm md:flex md:items-center md:gap-3 font-bold text-white hidden")
+            a(href="/home" class="text-white font-bold text-xl mx-4 hover:text-black") Home
+            if user 
+                a(href="/lobby" class="text-white font-bold text-xl mx-4 hover:text-black") Lobby
+                a(href="/profile" class="text-white font-bold text-xl mx-4 hover:text-black") Profile
+                a(href="/logout" class="text-white font-bold text-xl mx-4 hover:text-black") Logout
+            else
+                a(href="/login" class="text-white font-bold text-xl mx-4 hover:text-black") Login
+                a(href="/registro" class="text-white font-bold text-xl mx-4 hover:text-black") Register
+>>>>>>> 7b4519f4313fe963f0d2ddecf5cddf7766fe2340

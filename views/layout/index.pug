@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 doctype html
 html(lang="en")
   head
@@ -18,3 +19,25 @@ html(lang="en")
     main.container.mx-auto.mt-20
      block content
   
+=======
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Stop Game | #{title}	
+    link(rel="stylesheet", href="/css/style.css")
+    if title == 'Game' || title =="test"
+      body(class="bg-gradient-to-r from-pink-400 to-purple-500")
+    if title == 'Registre' || title == 'Login'
+      body(class="bg-no-repeat bg-cover bg-center bg-fixed bg-gradient-to-b  bg-opacity-50" style="background-image: url('../img/test4.jpg');")
+    if title == 'lobby'
+      body(class="bg-no-repeat bg-cover bg-center bg-fixed bg-gradient-to-b  bg-opacity-50" style="background-image: url('../img/test6.jpg');")
+    else
+      body(class="bg-no-repeat bg-cover bg-center bg-fixed bg-gradient-to-b  bg-opacity-50" style="background-image: url('../img/test1.jpg');")
+    include header
+    main.container.mx-auto.mt-20
+     block content
+  
+>>>>>>> 7b4519f4313fe963f0d2ddecf5cddf7766fe2340

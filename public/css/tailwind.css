@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -29,3 +30,36 @@
 .form-field input[type="submit"]:hover {
   background-color: #3e8e41;
 }
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form-field label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-field input[type="text"] {
+  font-size: 16px;
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.form-field input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.form-field input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+>>>>>>> 7b4519f4313fe963f0d2ddecf5cddf7766fe2340
